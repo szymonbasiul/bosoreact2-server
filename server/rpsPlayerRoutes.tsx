@@ -19,23 +19,9 @@ router.get("/", (req, res) => {
 	// console.log(req.body);
 });
 
-console.log("przed post console.log");
-router.post("/", (req, res) => {
-	// const user = req.params.username;
-	// dbCredentials.query(
-	// 	"INSERT INTO rps_player(playername, score) VALUES (?,?)",
-	// 	[user, 1],
-	// 	(error) => {
-	// 		error && console.error(error);
-	// 		console.log("User added!");
-	
-	// 		res.status(200).json({ msg: "User added" });
-	// 	}
-	// );
-	
 
-		console.log(req.body);
-	
+router.post("/", (req, res) => {
+	console.log(req.body);
 	res.send(req.body);
 	
 });

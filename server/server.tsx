@@ -14,4 +14,3 @@ app.use("/rpsplayer", require("./rpsPlayerRoutes.tsx"));
 app.listen(port, () => {
 	console.log("Server on!",port);
 });
-6
