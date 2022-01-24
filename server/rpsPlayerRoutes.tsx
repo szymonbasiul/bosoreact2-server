@@ -5,18 +5,18 @@ const dbCredentials = mysql.createConnection({
 	user: "admin",
 	host: "bosoreact2.cecmtuenja8x.us-east-2.rds.amazonaws.com",
 	password: "password",
-	database: "bosoreact2",
+	database: "RPSplayers",
 });
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-	// dbCredentials.query("SELECT * FROM rps_player", (error, results) => {
-	// 	error && console.error(error);
-	// 	console.log(results);
-	// 	res.json(results);
-	// });
-	// console.log(req.body);
+	dbCredentials.query("SELECT * FROM userScore", (error, results) => {
+		error && console.error(error);
+		console.log(results);
+		res.json(results);
+	});
+	console.log(req.body);
 });
 
 console.log("przed post console.log");
@@ -28,12 +28,10 @@ router.post("/", (req, res) => {
 	// 	(error) => {
 	// 		error && console.error(error);
 	// 		console.log("User added!");
-	console.log("cokolwiek");
+	console.log("elo");
 	// 		res.status(200).json({ msg: "User added" });
 	// 	}
 	// );
-
-	console.log(req.body);
 	res.end({ message: "Kurde cos" });
 });
 
