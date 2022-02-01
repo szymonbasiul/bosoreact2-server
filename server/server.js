@@ -1,15 +1,17 @@
 // import express from "express";
 
-const express = require("express");
-const mysql = require("mysql");
+import express from "express";
+import mysql from "mysql";
 const app = express();
 const port = process.env.PORT || 8000;
-const cors = require("cors");
+import cors from "cors";
 app.use(cors());
 
 app.use(express.json());
 
-app.use("/rpsplayer", require("./rpsPlayerRoutes.tsx"));
+import rpsPlayerRoutes from "./rpsPlayerRoutes.js";
+
+app.use("/rpsplayer", rpsPlayerRoutes);
 app.post("/", (req, res) => {
 	console.log("cokolwiek2");
 	res.json({ message: "Kurde juz" }).end();
