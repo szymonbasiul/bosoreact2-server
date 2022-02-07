@@ -19,9 +19,16 @@ router.get("/", (req, res) => {
 	console.log(req.body);
 });
 
-console.log("przed post console.log");
 router.post("/", (req, res) => {
-	console.log(req.body);
+	// console.log(req.body);
+	const userName = req.body.userName;
+	const userScore = req.body.userScore;
+	dbCredentials.query(
+		"INSERT INTO userScore(userName, userScore) VALUES (?, ?)",
+		[userName, userScore],
+		(err) => err && console.error(err)
+	);
+	console.log("poszło");
 	res.json({ message: "Kurde cos" });
 });
 

@@ -12,14 +12,6 @@ app.use(express.json());
 import rpsPlayerRoutes from "./rpsPlayerRoutes.js";
 
 app.use("/rpsplayer", rpsPlayerRoutes);
-app.post("/", (req, res) => {
-	console.log("cokolwiek2");
-	res.json({ message: "Kurde juz" }).end();
-});
-// app.get("/", (req, res) => {
-// 	console.log("cokolwiek2");
-// 	res.json({ message: "Kurde juz" }).end();
-// });
 
 app.listen(port, () => {
 	console.log("Server on!");
