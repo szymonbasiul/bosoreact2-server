@@ -5,13 +5,13 @@ const dbCredentials = mysql.createConnection({
 	user: "admin",
 	host: "bosoreact2.cecmtuenja8x.us-east-2.rds.amazonaws.com",
 	password: "password",
-	database: "RPSplayers",
+	database: "bosoreact2",
 });
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-	dbCredentials.query("SELECT * FROM userScore", (error, results) => {
+	dbCredentials.query("SELECT * FROM usersScore", (error, results) => {
 		error && console.error(error);
 		console.log(results);
 		res.json(results);
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
 	const userName = req.body.userName;
 	const userScore = req.body.userScore;
 	dbCredentials.query(
-		"INSERT INTO userScore(userName, userScore) VALUES (?, ?)",
+		"INSERT INTO usersScore(userName, userScore) VALUES (?, ?)",
 		[userName, userScore],
 		(err) => err && console.error(err)
 	);
