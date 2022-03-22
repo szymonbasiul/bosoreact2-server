@@ -1,20 +1,19 @@
 // import express from "express";
 
-import express from "express";
-// import mysql from "mysql";
+const express = require("express")
+const mysql = require("mysql");
 const app = express();
 const port = process.env.PORT || 8000;
-import cors from "cors";
+const cors = require("cors");
 app.use(cors());
-
 app.use(express.json());
 
-import rpsPlayerRoutes from "./rpsPlayerRoutes.js";
-import memory from "./memory.js";
-
-app.use("/rpsplmayer", rpsPlayerRoutes);
-app.use("/memory", memory);
+app.use("/rpsplayer", require("./rpsPlayerRoutes.tsx"));
+app.use("/test111",(req,res)=>{
+	res.send({test:"123"})
+})
 
 app.listen(port, () => {
-	console.log("Server on!");
+	console.log("Server on!",port);
 });
+6
