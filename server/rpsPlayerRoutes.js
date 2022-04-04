@@ -3,8 +3,8 @@ import mysql from "mysql";
 
 const dbCredentials = mysql.createConnection({
 	user: "admin",
-	host: "bosoreact2.cecmtuenja8x.us-east-2.rds.amazonaws.com",
-	password: "password",
+	host: "sl-eu-gb-p01.dblayer.com",
+	password: "HUAQOVSXZDHGZMFJ",
 	database: "bosoreact2",
 });
 

@@ -3,12 +3,35 @@ import mysql from "mysql";
 
 const dbCredentials = mysql.createConnection({
 	user: "admin",
-	host: "bosoreact2.cecmtuenja8x.us-east-2.rds.amazonaws.com",
-	password: "password",
-	database: "bosoreact2",
+	host: "sl-eu-gb-p01.dblayer.com",
+	password: "HUAQOVSXZDHGZMFJ",
+	database: "user",
+	port: 20473,
 });
 
 const router = express.Router();
+
+// send logIn request from login input form to server, then get response logged
+router.post("/login", (req, res) => {
+	const loginChecker = req.body.login;
+	const passwordChecker = req.body.password;
+	dbCredentials.query(
+		"SELECT userPassword FROM users WHERE userName = (?)",
+		[loginChecker],
+		(err, response) => {
+			if (err) {
+				return console.log(err);
+			}
+			console.log(passwordChecker, response[0].userPassword);
+			if (
+				JSON.stringify(passwordChecker) ===
+				JSON.stringify(response[0].userPassword)
+			) {
+				res.json({ loginVerified: true });
+			}
+		}
+	);
+});
 
 router.post("/register", (req, res) => {
 	const newUserName = req.body.registerNewUserName;
