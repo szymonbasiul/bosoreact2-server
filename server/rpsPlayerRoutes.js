@@ -5,15 +5,16 @@ const dbCredentials = mysql.createConnection({
 	user: "admin",
 	host: "sl-eu-gb-p01.dblayer.com",
 	password: "HUAQOVSXZDHGZMFJ",
-	database: "bosoreact2",
+	database: "user",
+	port: 20473
 });
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	dbCredentials.query("SELECT * FROM usersScore", (error, results) => {
-		error && console.error(error);
-		console.log(results);
+router.get("/", async(req, res) => {
+	dbCredentials.query("SELECT * FROM users", (error, results) => {
+		if(error) return  console.error(error);
+		console.log('results',results);
 		res.json(results);
 	});
 	console.log(req.body);
